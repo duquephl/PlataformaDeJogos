@@ -1,0 +1,35 @@
+Desenvolvedora(IdDesenvolvedora*, Nome, Responsavel, Sobre, DataCriacao)
+Regiao(IdRegiao*, Nome)
+Pais(IdPais*, Nome,IdRegiao)
+ IdRegiao referencia Regiao
+Distribuidora(IdDistribuidora*,Nome, Sobre, Responsavel, DataCriacao, IdRegiao,)
+ IdRegiao referencia Regiao
+Idioma(IdIdioma*, Nome)
+Plataforma(IdPlataforma*, Nome)
+Jogo(IdJogo*, Nome, Genero, DataLancamento, Classificacao, RequisitosSistema, Preco, IdDesenvolvedora, IdDistribuidora)
+ IdDesenvolvedora referencia Desenvolvedora
+ IdDistribuidora referencia Distribuidora
+IdiomaJogo(IdIdioma*,IdJogo*)
+ IdIdioma referencia Idioma
+ IdJogo referencia Jogo
+Usuario(IdUsuario*, Nome, Usename, Saldo, Senha, Telefone, Email, IdPais)
+ IdPais referencia Pais
+UsuarioJogo(IdUsuario*,IdJogo*,IdTransacao)
+ IdUsuario referencia Usuario
+ IdJogo referencia Jogo
+ IdTransacao referencia Transacao
+UsuarioUsuario(IdUsuario1,IdUsuario2)
+ IdUsuario1 referencia Usuario
+ IdUsuario2 referencia Usuario
+Cartao(IdCartao*, Nome, NumeroCartao, CPF, CVV, Validade, Tipo, IdUsuario)
+ IdUsuario referencia Usuario
+Cupom(IdCupom*,Validade,Valor, Porcentagem,IdJogo)
+ IdJogo referencia Jogo
+Transacao(IdTransacao*,Total,Data,IdCupom,Boleto,Saldo,IdCartao)
+ IdCupom referencia Cupom
+ IdCartao referencia Cartao
+Comunidade(IdComunidade*, Titulo, Mensagem,Arquivo, Avaliacao, IdJogo)
+ IdJogo referencia Jogo
+PlataformaJogo(IdPlataforma,IdJogo)
+ IdJogo referencia Jogo
+ IdPlataforma referencia Plataforma
